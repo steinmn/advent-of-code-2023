@@ -25,7 +25,7 @@ def is_valid(valid_threshold: ColorCombo, min_required: ColorCombo):
     return min_required.r <= valid_threshold.r and min_required.g <= valid_threshold.g and min_required.b <= valid_threshold.b
 
 def parse_line(line: str):
-    line_split1 = line.strip('\n').strip('Game ').split(': ')
+    line_split1 = line.rstrip('\n').lstrip('Game ').split(': ')
     game_id = int(line_split1[0])
     samples = [get_color_combo_from_string(samplestring) for samplestring in line_split1[1].split('; ')]
     return game_id, samples
